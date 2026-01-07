@@ -17,6 +17,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# افزودن پوشه‌های استاتیک (جدید)
+app.mount("/images", StaticFiles(directory="images"), name="images")
+app.mount("/videos", StaticFiles(directory="videos"), name="videos")
+
+
 class Item(BaseModel):
     id: str
     title: str
