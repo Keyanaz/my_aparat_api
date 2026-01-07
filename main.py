@@ -45,27 +45,32 @@ def get_news():
 # endpoint جدید برای ریشه (/)
 @app.get("/", response_class=HTMLResponse)    #یک صفحه HTML ساده برمی‌گرداند
 def root():
-   # لیست تمام فایل‌ها و پوشه‌های فعلی (هیچ فایلی حذف نمی‌شود)
+    # لیست تمام فایل‌ها و پوشه‌های فعلی (هیچ فایلی حذف نمی‌شود)
     files = os.listdir(".")
     html_content = """
     <html>
         <head>
             <title>Index of /</title>
             <style>
-                body { font-family: Arial, sans-serif; margin: 40px; }
+                body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
                 h1 { color: #333; }
                 ul { list-style-type: none; padding: 0; }
-                li { margin: 10px 0; }
-                a { text-decoration: none; color: #0066cc; font-size: 18px; }
+                li { margin: 10px 0; padding: 10px; background: white; border: 1px solid #ddd; border-radius: 5px; }
+                a { text-decoration: none; color: #0066cc; font-size: 18px; font-weight: bold; }
                 a:hover { text-decoration: underline; }
+                .highlight { background: #e6f7ff; border: 2px solid #91d5ff; }
             </style>
         </head>
         <body>
             <h1>Index of /</h1>
             <ul>
+                <li class="highlight"><a href="/getNews">getNews</a> (دریافت اطلاعات فیلم‌ها به صورت JSON)</li>
     """
-    for file in sorted(files):  # مرتب‌سازی الفبایی برای زیبایی
-        html_content += f'<li><a href="/{file}">{file}/</a></li>' if os.path.isdir(file) else f'<li><a href="/{file}">{file}</a></li>'
+    for file in sorted(files):
+        if os.path.isdir(file):
+            html_content += f'<li><a href="/{file}/">{file}/</a></li>'
+        else:
+            html_content += f'<li><a href="/{file}">{file}</a></li>'
     html_content += """
             </ul>
         </body>
