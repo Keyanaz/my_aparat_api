@@ -34,9 +34,18 @@ def get_news():
 
 @app.get("/", response_class=HTMLResponse)
 def root():
-    files = os.listdir(".")
-    html_content = "<html><head><title>Index of /</title></head><body><h1>Index of /</h1><ul>"
-    for file in files:
-        html_content += f'<li><a href="/{file}">{file}</a></li>'
-    html_content += "</ul></body></html>"
+    html_content = """
+    <html>
+        <head><title>Index of /pack/aparat</title>...</head>
+        <body>
+            <h1>Index of /pack/aparat</h1>
+            <ul>
+                <li class="highlight"><a href="/getNews">getNews.php</a> → اطلاعات اصلی (JSON)</li>
+                <li><a href="/main.py">main.py</a></li>
+                <li><a href="/data.json">data.json</a></li>
+                <li><a href="/requirements.txt">requirements.txt</a></li>
+            </ul>
+        </body>
+    </html>
+    """
     return HTMLResponse(content=html_content)
