@@ -32,20 +32,10 @@ items: List[Item] = [Item(**item) for item in data]
 def get_news():
     return items
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 def root():
-    html_content = """
-    <html>
-        <head><title>Index of /pack/aparat</title>...</head>
-        <body>
-            <h1>Index of /pack/aparat</h1>
-            <ul>
-                <li class="highlight"><a href="/getNews">getNews.php</a> → اطلاعات اصلی (JSON)</li>
-                <li><a href="/main.py">main.py</a></li>
-                <li><a href="/data.json">data.json</a></li>
-                <li><a href="/requirements.txt">requirements.txt</a></li>
-            </ul>
-        </body>
-    </html>
-    """
-    return HTMLResponse(content=html_content)
+    return JSONResponse({
+        "message": "API فعال است. برای دسترسی به اطلاعات، از /getNews استفاده کنید.",
+        "documentation": "/docs",
+        "getNews": "/getNews"
+    })
