@@ -126,7 +126,7 @@ def root():
         <body>
             <h1>خوش آمدید به API شخصی</h1>
             <p>Welcome to My Personal API</p>
-            <p><a href="/getNews">دریافت اطلاعات (getNews)</a></p>
+            <p><a href="/getNews">دریافت اطلاعات-getNews</a></p>
         </body>
     </html>
     """
