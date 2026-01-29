@@ -114,7 +114,7 @@ def root():
     html = """
     <html dir="rtl">
         <head>
-            <title>API خوش‌آمدگویی</title>
+            <title> خوش‌آمدگویی API </title>
             <style>
                 body {background: linear-gradient(to right, #ff7e5f, #feb47b); font-family: Tahoma; color: white; text-align: center; padding: 100px;}
                 h1 {font-size: 40px;}
@@ -124,9 +124,9 @@ def root():
             </style>
         </head>
         <body>
-            <h1>خوش آمدید به API شخصی</h1>
+            <h1> به وب سرویس خوش آمدید  </h1>
             <p>Welcome to My Personal API</p>
-            <p><a href="/getNews">دریافت اطلاعات-getNews</a></p>
+            <p><a href="/getNews"> دریافت اطلاعات _ getNews </a></p>
         </body>
     </html>
     """
